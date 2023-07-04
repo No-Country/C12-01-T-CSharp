@@ -1,15 +1,27 @@
+using Core.interfaces;
+using Infrastructure.repositorios;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Core;
+using Infrastructure;
+using System.Text.Json.Serialization;
+using Core.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+/*builder.Services.AddControllers().AddJsonOptions(x =>
+x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());*/
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IGenerica<Autor>,GenericoRepo<Autor>>();
+builder.Services.AddScoped<IGenerica<Libro>,GenericoRepo<Libro>>();
+builder.Services.AddScoped<IGenerica<Genero>,GenericoRepo<Genero>>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

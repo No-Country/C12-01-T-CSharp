@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj": {}
+    "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj": {}
   },
   "projects": {
-    "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj": {
+    "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\Jhonatan\\.nuget\\packages\\",
-        "outputPath": "E:\\TrackedProyects\\MercadoLibro\\API\\obj\\",
+        "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\mides\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jhonatan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mides\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -45,9 +44,23 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -73,21 +86,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj": {
+    "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\Jhonatan\\.nuget\\packages\\",
-        "outputPath": "E:\\TrackedProyects\\MercadoLibro\\Core\\obj\\",
+        "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\mides\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jhonatan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mides\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,6 +125,18 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -128,21 +153,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Jhonatan\\.nuget\\packages\\",
-        "outputPath": "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\mides\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jhonatan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mides\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -156,8 +181,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj": {
-                "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj"
+              "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj"
               }
             }
           }
@@ -171,6 +196,18 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -187,7 +224,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
