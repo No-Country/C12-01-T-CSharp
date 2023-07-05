@@ -949,19 +949,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mides\\.nuget\\packages\\": {}
+    "C:\\Users\\Jhonatan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj",
+      "projectUniqueName": "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\mides\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Core\\obj\\",
+      "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\Jhonatan\\.nuget\\packages\\",
+      "outputPath": "E:\\TrackedProyects\\MercadoLibro\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mides\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jhonatan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1014,7 +1014,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

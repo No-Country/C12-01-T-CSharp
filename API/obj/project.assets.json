@@ -1555,19 +1555,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mides\\.nuget\\packages\\": {}
+    "C:\\Users\\Jhonatan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj",
+      "projectUniqueName": "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\mides\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\API\\obj\\",
+      "projectPath": "E:\\TrackedProyects\\MercadoLibro\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Jhonatan\\.nuget\\packages\\",
+      "outputPath": "E:\\TrackedProyects\\MercadoLibro\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mides\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jhonatan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1575,14 +1575,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\mides\\OneDrive\\Escritorio\\C12-01-T-CSharp\\Infrastructure\\Infrastructure.csproj"
+            "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "E:\\TrackedProyects\\MercadoLibro\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -1639,7 +1640,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
