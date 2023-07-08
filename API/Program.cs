@@ -10,7 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setupAction =>
+{
+    setupAction.SwaggerDoc("LibraryOpenAPISpecification", new()
+    {
+        Title = "Mercado Libro API",
+        Version = "1"
+    });
+});
 
 builder.Services.AddDbContext<BookCartContext>(options =>
 {
@@ -26,7 +33,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(setupAction =>
+    {
+        setupAction.SwaggerEndpoint("/swagger/LibraryOpenAPISpecification/swagger.json", "MercadoLibroAPI");
+        setupAction.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseCors("CorsPolicy");
