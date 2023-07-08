@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA1417E2-995E-4BB0-B41A-087136391FEF}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		captain-definition = captain-definition
 		Db.txt = Db.txt
 	EndProjectSection
 EndProject
