@@ -1,0 +1,31 @@
+CREATE TABLE Book (
+    BookID SERIAL PRIMARY KEY,
+    Title varchar(100) NOT NULL,
+    Author varchar(100) NOT NULL,
+    Category varchar(20) NOT NULL,
+    Price decimal(10, 2) NOT NULL,
+    CoverFileName varchar(100)
+);
+
+INSERT INTO Book (Title, Author, Category, Price, CoverFileName)
+VALUES
+   ('Matar a un ruiseñor', 'Harper Lee', 'Ficción', 25.99, 'matar_a_un_ruisenor.jpg'),
+    ('1984', 'George Orwell', 'Ficción', 19.99, '1984.jpg'),
+    ('El gran Gatsby', 'F. Scott Fitzgerald', 'Ficción', 15.99, 'el_gran_gatsby.jpg'),
+    ('El guardián entre el centeno', 'J.D. Salinger', 'Ficción', 12.99, 'el_guardian_entre_el_centeno.jpg'),
+    ('Orgullo y prejuicio', 'Jane Austen', 'Ficción', 14.99, 'orgullo_y_prejuicio.jpg'),
+    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Fantasía', 29.99, 'harry_potter_piedra_filosofal.jpg'),
+    ('El hobbit', 'J.R.R. Tolkien', 'Fantasía', 24.99, 'el_hobbit.jpg'),
+    ('El código Da Vinci', 'Dan Brown', 'Misterio', 18.99, 'el_codigo_da_vinci.jpg'),
+    ('Los juegos del hambre', 'Suzanne Collins', 'Jóvenes Adultos', 16.99, 'los_juegos_del_hambre.jpg'),
+    ('El alquimista', 'Paulo Coelho', 'Ficción', 12.99, 'el_alquimista.jpg'),
+    ('El señor de los anillos', 'J.R.R. Tolkien', 'Fantasía', 34.99, 'el_senor_de_los_anillos.jpg'),
+    ('Matar a un reino', 'Alexandra Christo', 'Jóvenes Adultos', 14.99, 'matar_a_un_reino.jpg'),
+    ('La chica del tren', 'Paula Hawkins', 'Misterio', 17.99, 'la_chica_del_tren.jpg'),
+    ('Las crónicas de Narnia', 'C.S. Lewis', 'Fantasía', 28.99, 'las_cronicas_de_narnia.jpg'),
+    ('Bajo la misma estrella', 'John Green', 'Jóvenes Adultos', 13.99, 'bajo_la_misma_estrella.jpg'),
+    ('El resplandor', 'Stephen King', 'Terror', 21.99, 'el_resplandor.jpg'),
+    ('Perdida', 'Gillian Flynn', 'Misterio', 16.99, 'perdida.jpg'),
+    ('La vida secreta de las abejas', 'Sue Monk Kidd', 'Ficción', 19.99, 'la_vida_secreta_de_las_abejas.jpg'),
+    ('El corredor del laberinto', 'James Dashner', 'Jóvenes Adultos', 15.99, 'el_corredor_del_laberinto.jpg'),
+    ('Dune', 'Frank Herbert', 'Ciencia Ficción', 23.99, 'dune.jpg');
