@@ -2,6 +2,7 @@ using API.DataAccess;
 using API.Interfaces;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,9 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
         setupAction.RoutePrefix = string.Empty;
     });
 }
+
+app.UseStaticFiles();
+
 
 app.UseCors("CorsPolicy");
 

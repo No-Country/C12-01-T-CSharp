@@ -21,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Frontend\" />
     <Folder Include="models\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>

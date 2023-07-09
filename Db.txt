@@ -9,12 +9,12 @@ CREATE TABLE Book (
 
 INSERT INTO Book (Title, Author, Category, Price, CoverFileName)
 VALUES
-   ('Matar a un ruiseñor', 'Harper Lee', 'Ficción', 25.99, 'matar_a_un_ruisenor.jpg'),
-    ('1984', 'George Orwell', 'Ficción', 19.99, '1984.jpg'),
-    ('El gran Gatsby', 'F. Scott Fitzgerald', 'Ficción', 15.99, 'el_gran_gatsby.jpg'),
-    ('El guardián entre el centeno', 'J.D. Salinger', 'Ficción', 12.99, 'el_guardian_entre_el_centeno.jpg'),
-    ('Orgullo y prejuicio', 'Jane Austen', 'Ficción', 14.99, 'orgullo_y_prejuicio.jpg'),
-    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Fantasía', 29.99, 'harry_potter_piedra_filosofal.jpg'),
+   ('Matar a un ruiseñor', 'Harper Lee', 'Ficción', 25.99, 'https://localhost:7196/wwwroot/images/Matar-a-un-ruisenor.jpg'),
+    ('1984', 'George Orwell', 'Ficción', 19.99, 'https://localhost:7196/wwwroot/images/1984.jpg'),
+    ('El gran Gatsby', 'F. Scott Fitzgerald', 'Ficción', 15.99, 'https://localhost:7196/wwwroot/images/el_gran_gatsby.jpg'),
+    ('El guardián entre el centeno', 'J.D. Salinger', 'Ficción', 12.99, 'https://localhost:7196/wwwroot/images/El-guardian-entre-el-centeno.jpg'),
+    ('Orgullo y prejuicio', 'Jane Austen', 'Ficción', 14.99, 'https://localhost:7196/wwwroot/images/Orgullo-y-prejuicio.jpg'),
+    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Fantasía', 29.99, 'https://localhost:7196/wwwroot/images/Harry-Potter-y-la-piedra-filosofal.jpg'),
     ('El hobbit', 'J.R.R. Tolkien', 'Fantasía', 24.99, 'el_hobbit.jpg'),
     ('El código Da Vinci', 'Dan Brown', 'Misterio', 18.99, 'el_codigo_da_vinci.jpg'),
     ('Los juegos del hambre', 'Suzanne Collins', 'Jóvenes Adultos', 16.99, 'los_juegos_del_hambre.jpg'),
