@@ -29,3 +29,17 @@ VALUES
     ('La vida secreta de las abejas', 'Sue Monk Kidd', 'Ficción', 19.99, 'images/La-vida-secreta-de-las-abejas.jpg'),
     ('El corredor del laberinto', 'James Dashner', 'Jóvenes Adultos', 15.99, 'images/El-corredor-del-laberinto.jpg'),
     ('Dune', 'Frank Herbert', 'Ciencia Ficción', 23.99, 'images/Dune.jpg');
+
+CREATE TABLE Categories (
+    CategoryID SERIAL PRIMARY KEY,
+    CategoryName varchar(20) NOT NULL
+);
+
+INSERT INTO Categories (CategoryName) VALUES ('Terror');
+INSERT INTO Categories (CategoryName) VALUES ('Ficción');
+INSERT INTO Categories (CategoryName) VALUES ('Misterio');
+INSERT INTO Categories (CategoryName) VALUES ('Jóvenes Adultos');
+INSERT INTO Categories (CategoryName) VALUES ('Fantasía');
+INSERT INTO Categories (CategoryName) VALUES ('Ciencia Ficción');
+
+

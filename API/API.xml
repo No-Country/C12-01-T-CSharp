@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.BookController.GetBooks">
+            <summary>
+            Get all books
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.BookController.GetBook(System.Int32)">
+            <summary>
+            Get book by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.BookController.GetAllCategories">
+            <summary>
+            Get all categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.BookController.GetFiveRandomBooksFromSimilarCategory(System.Int32)">
+            <summary>
+            Get five random books from a similar category
+            </summary>
+            <param name="CategoryId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

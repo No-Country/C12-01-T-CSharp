@@ -17,6 +17,7 @@ namespace API.Models
         }
 
         public virtual DbSet<Book> Books { get; set; } = null!;
+        public virtual DbSet<Category> Categories { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -54,6 +55,17 @@ namespace API.Models
                 entity.Property(e => e.Title)
                     .HasMaxLength(100)
                     .HasColumnName("title");
+            });
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.ToTable("categories");
+
+                entity.Property(e => e.Categoryid).HasColumnName("categoryid");
+
+                entity.Property(e => e.Categoryname)
+                    .HasMaxLength(20)
+                    .HasColumnName("categoryname");
             });
 
             OnModelCreatingPartial(modelBuilder);
