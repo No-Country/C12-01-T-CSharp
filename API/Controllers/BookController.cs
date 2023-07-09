@@ -10,16 +10,21 @@ namespace API.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
-
-        public BookController(IBookService bookService)
+        private readonly IConfiguration _configuration;
+        public BookController(IBookService bookService, IConfiguration configuration)
         {
             _bookService = bookService;
+            _configuration = configuration;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Book>>> Get()
         {
-            return await _bookService.GetAllBooks();
+
+            List<Book> books = await _bookService.GetAllBooks();
+            books.ForEach(e =>  e.Coverfilename = _configuration["ApiUrl"] + e.Coverfilename);
+            
+            return books;
         }
 
     }
