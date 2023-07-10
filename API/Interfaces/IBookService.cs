@@ -8,11 +8,11 @@ namespace API.Interfaces
         Task<List<Book>> GetAllBooks(BooksResourceParameters parameters);
         Task<Book?> GetBookById(int id);
 
-        Task<List<Category>> GetAllCategories();
+        Task<List<Categories>> GetAllCategories();
         Task<bool> IsValidCategory(string category);
-        Task<Category?> GetCategoryById(int id);
+        Task<Categories?> GetCategoryById(int id);
 
-        Task<List<Book>> GetFiveRandomBooksFromSimilarCategory(Category category);
+        Task<List<Book>> GetFiveRandomBooksFromSimilarCategory(Categories category);
     }
 
     

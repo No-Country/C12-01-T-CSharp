@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Models
 {
-    public partial class Category
+    public partial class Categories
     {
-        public int Categoryid { get; set; }
-        public string Categoryname { get; set; } = null!;
+        [Key]
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; } = null!;
     }
 }

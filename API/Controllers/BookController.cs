@@ -7,7 +7,7 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace API.Controllers
 {
-    [Route("api/books")]
+    [Route("api/Book")]
     [ApiController]
     public class BookController : ControllerBase
     {
@@ -41,7 +41,7 @@ namespace API.Controllers
 
             if (books.Count == 0) return NotFound($"No se encontro '{parameters.Search}' en Title ni en Author");
             
-            books.ForEach(e =>  e.Coverfilename = _configuration["ApiUrl"] + e.Coverfilename);
+            books.ForEach(e =>  e.coverFileName = _configuration["ApiUrl"] + e.coverFileName);
             
             return books;
         }
@@ -59,7 +59,7 @@ namespace API.Controllers
 
             if (book == null) return BadRequest();
 
-            book.Coverfilename = _configuration["ApiUrl"] + book.Coverfilename;
+            book.coverFileName = _configuration["ApiUrl"] + book.coverFileName;
 
             return Ok(book);
         }
@@ -68,11 +68,11 @@ namespace API.Controllers
         /// Get all categories
         /// </summary>
         /// <returns></returns>
-        [Route("categories")]
+        [Route("GetCategoriesList")]
         [HttpGet]
-        public async Task<ActionResult<Category>> GetAllCategories()
+        public async Task<ActionResult<Categories>> GetAllCategories()
         {
-            List<Category> categories = await _bookService.GetAllCategories();
+            List<Categories> categories = await _bookService.GetAllCategories();
 
             return Ok(categories);
         }
@@ -82,17 +82,17 @@ namespace API.Controllers
         /// </summary>
         /// <param name="CategoryId"></param>
         /// <returns></returns>
-        [Route("FiveRandomBooksFromSimilarCategory/{CategoryId}")]
+        [Route("GetSimilarBooks/{CategoryId}")]
         [HttpGet]
         public async Task<ActionResult<Book>> GetFiveRandomBooksFromSimilarCategory(int CategoryId)
         {
-            Category? category = await _bookService.GetCategoryById(CategoryId);
+            Categories? category = await _bookService.GetCategoryById(CategoryId);
 
             if (category == null) return BadRequest();
 
 
             List<Book> books = await _bookService.GetFiveRandomBooksFromSimilarCategory(category);
-            books.ForEach(e => e.Coverfilename = _configuration["ApiUrl"] + e.Coverfilename);
+            books.ForEach(e => e.coverFileName = _configuration["ApiUrl"] + e.coverFileName);
 
             return Ok(books);
         }

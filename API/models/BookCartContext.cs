@@ -17,7 +17,7 @@ namespace API.Models
         }
 
         public virtual DbSet<Book> Books { get; set; } = null!;
-        public virtual DbSet<Category> Categories { get; set; } = null!;
+        public virtual DbSet<Categories> Categories { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,7 +34,7 @@ namespace API.Models
             {
                 entity.ToTable("book");
 
-                entity.Property(e => e.Bookid).HasColumnName("bookid");
+                entity.Property(e => e.BookId).HasColumnName("bookid");
 
                 entity.Property(e => e.Author)
                     .HasMaxLength(100)
@@ -44,7 +44,7 @@ namespace API.Models
                     .HasMaxLength(20)
                     .HasColumnName("category");
 
-                entity.Property(e => e.Coverfilename)
+                entity.Property(e => e.coverFileName)
                     .HasMaxLength(100)
                     .HasColumnName("coverfilename");
 
@@ -57,13 +57,13 @@ namespace API.Models
                     .HasColumnName("title");
             });
 
-            modelBuilder.Entity<Category>(entity =>
+            modelBuilder.Entity<Categories>(entity =>
             {
                 entity.ToTable("categories");
 
-                entity.Property(e => e.Categoryid).HasColumnName("categoryid");
+                entity.Property(e => e.CategoryId).HasColumnName("categoryid");
 
-                entity.Property(e => e.Categoryname)
+                entity.Property(e => e.CategoryName)
                     .HasMaxLength(20)
                     .HasColumnName("categoryname");
             });

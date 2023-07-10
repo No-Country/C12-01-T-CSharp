@@ -46,10 +46,10 @@ namespace API.DataAccess
 
         public async Task<Book?> GetBookById(int id)
         {
-            return await  _dbContext.Books.FirstOrDefaultAsync(b => b.Bookid == id);
+            return await  _dbContext.Books.FirstOrDefaultAsync(b => b.BookId == id);
         }
 
-        public async Task<List<Category>> GetAllCategories()
+        public async Task<List<Categories>> GetAllCategories()
         {
             return await _dbContext.Categories.ToListAsync();
         }
@@ -58,21 +58,21 @@ namespace API.DataAccess
         {   
             string cat = category.Trim().ToLower();
 
-            return await _dbContext.Categories.AnyAsync(c => c.Categoryname.ToLower() == cat);
+            return await _dbContext.Categories.AnyAsync(c => c.CategoryName.ToLower() == cat);
         }
 
-        public async Task<Category?> GetCategoryById(int id)
+        public async Task<Categories?> GetCategoryById(int id)
         {
-            return await _dbContext.Categories.FirstOrDefaultAsync(c => c.Categoryid == id);
+            return await _dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == id);
         }
 
 
-        public async Task<List<Book>> GetFiveRandomBooksFromSimilarCategory(Category category)
+        public async Task<List<Book>> GetFiveRandomBooksFromSimilarCategory(Categories category)
         {   
             Random random = new Random();
 
             List<Book> randomBooks = await _dbContext.Books
-                .Where(b => b.Category == category.Categoryname)
+                .Where(b => b.Category == category.CategoryName)
                 .ToListAsync();
 
             randomBooks = randomBooks.OrderBy(b => random.Next()).Take(5).ToList();
