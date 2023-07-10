@@ -32,7 +32,6 @@
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Frontend\" />
-    <Folder Include="Helpers\" />
     <Folder Include="models\" />
   </ItemGroup>
 

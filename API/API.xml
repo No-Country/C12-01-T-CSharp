@@ -4,7 +4,7 @@
         <name>API</name>
     </assembly>
     <members>
-        <member name="M:API.Controllers.BookController.GetBooks">
+        <member name="M:API.Controllers.BookController.GetBooks(API.Helpers.BooksResourceParameters)">
             <summary>
             Get all books
             </summary>
@@ -29,6 +29,21 @@
             </summary>
             <param name="CategoryId"></param>
             <returns></returns>
+        </member>
+        <member name="P:API.Helpers.BooksResourceParameters.Category">
+            <summary>
+            Filter by Category
+            </summary>
+        </member>
+        <member name="P:API.Helpers.BooksResourceParameters.Search">
+            <summary>
+            Search by Title and Author
+            </summary>
+        </member>
+        <member name="P:API.Helpers.BooksResourceParameters.Price">
+            <summary>
+            OrderBy Price, type ASC or DES, ASC by default
+            </summary>
         </member>
     </members>
 </doc>

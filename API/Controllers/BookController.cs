@@ -1,4 +1,5 @@
-﻿using API.Interfaces;
+﻿using API.Helpers;
+using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,23 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<Book>>> GetBooks()
+        public async Task<ActionResult<List<Book>>> GetBooks([FromQuery] BooksResourceParameters parameters)
         {
-            List<Book> books = await _bookService.GetAllBooks();
+            if (parameters.Category != null)
+            {
+                bool isValidCategory = await _bookService.IsValidCategory(parameters.Category);
+
+                if (!isValidCategory)
+                {
+                    return BadRequest($"Categoria Invalida: {parameters.Category} ");
+                }
+            }
+
+            // execute filtering and searching of books
+            List<Book> books = await _bookService.GetAllBooks(parameters);
+
+            if (books.Count == 0) return NotFound($"No se encontro '{parameters.Search}' en Title ni en Author");
+            
             books.ForEach(e =>  e.Coverfilename = _configuration["ApiUrl"] + e.Coverfilename);
             
             return books;

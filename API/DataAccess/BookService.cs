@@ -1,4 +1,5 @@
-﻿using API.Interfaces;
+﻿using API.Helpers;
+using API.Interfaces;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +14,34 @@ namespace API.DataAccess
         {
             _dbContext = dbContext;
         }
-        public async Task<List<Book>> GetAllBooks()
+        public async Task<List<Book>> GetAllBooks(BooksResourceParameters parameters)
         {
-            return await _dbContext.Books.AsNoTracking().ToListAsync();
+            var collection = _dbContext.Books  as IQueryable<Book>;
+
+
+            if (parameters.Price == "DES")
+            {
+                collection = collection.OrderByDescending(b => b.Price);
+            }
+            else collection = collection.OrderBy(b => b.Price);
+
+
+            //Fintering
+            if (!string.IsNullOrWhiteSpace(parameters.Category))
+            {
+                var category = parameters.Category.Trim().ToLower();
+                collection = collection.Where(b => b.Category.ToLower() == category);
+            }
+
+            //Searching
+            if (!string.IsNullOrWhiteSpace(parameters.Search))
+            {
+                var searching = parameters.Search.Trim().ToLower();
+                collection = collection.Where(b => b.Title.ToLower().Contains(searching) || b.Author.ToLower().Contains(searching));
+            }
+
+            return await collection.ToListAsync();
+
         }
 
         public async Task<Book?> GetBookById(int id)
@@ -26,6 +52,13 @@ namespace API.DataAccess
         public async Task<List<Category>> GetAllCategories()
         {
             return await _dbContext.Categories.ToListAsync();
+        }
+
+        public async Task<bool> IsValidCategory(string category)
+        {   
+            string cat = category.Trim().ToLower();
+
+            return await _dbContext.Categories.AnyAsync(c => c.Categoryname.ToLower() == cat);
         }
 
         public async Task<Category?> GetCategoryById(int id)
