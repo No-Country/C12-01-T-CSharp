@@ -4,6 +4,27 @@
         <name>API</name>
     </assembly>
     <members>
+        <member name="M:API.Controllers.AccountController.Register(API.Dtos.RegisterDto)">
+            <summary>
+            Sign in
+            </summary>
+            <param name="registerDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.AccountController.Login(API.Dtos.LoginDto)">
+            <summary>
+            Log in
+            </summary>
+            <param name="loginDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.AccountController.CheckEmailExistsAsync(System.String)">
+            <summary>
+            Check if the email exists
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
         <member name="M:API.Controllers.BookController.GetBooks(API.Helpers.BooksResourceParameters)">
             <summary>
             Get all books
