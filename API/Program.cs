@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using API.Identity;
+using API.models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using API.Services;
@@ -38,6 +39,7 @@ builder.Services.AddDbContext<BookCartContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 // Identity
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -55,8 +57,8 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
         options.Password.RequiredUniqueChars = 3;
     })
     .AddEntityFrameworkStores<AppIdentityDbContext>()
-    .AddUserStore<UserStore<AppUser, AppRole, AppIdentityDbContext>>()
-    .AddRoleStore<RoleStore<AppRole, AppIdentityDbContext>>();
+    .AddUserStore<UserStore<AppUser, AppRole, AppIdentityDbContext,int>>()
+    .AddRoleStore<RoleStore<AppRole, AppIdentityDbContext,int>>();
 
 // JWT
 builder.Services.AddTransient<IJwtService, JwtService>();

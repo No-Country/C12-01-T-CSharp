@@ -3,16 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Identity
 {
-    public class AppIdentityDbContext : IdentityDbContext<AppUser>
+    public class AppIdentityDbContext : IdentityDbContext<AppUser,AppRole,int>
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) :base(options)
         {
             
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace API.Identity
 {
-    public class AppRole : IdentityRole
+    public class AppRole : IdentityRole<int>
     {
 
     }

@@ -51,6 +51,52 @@
             <param name="CategoryId"></param>
             <returns></returns>
         </member>
+        <member name="M:API.Controllers.ShoppingCartController.Get(System.Int32,System.Int32)">
+            <summary>
+            Get the shopping cart for a user upon Login. If the user logs in for the first time, creates the shopping cart.
+            </summary>
+            <param name="oldUserId"></param>
+            <param name="newUserId"></param>
+            <returns>The count of items in shopping cart</returns>
+        </member>
+        <member name="M:API.Controllers.ShoppingCartController.Get(System.Int32)">
+            <summary>
+            Get the list of items in the shopping cart
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.ShoppingCartController.Post(System.Int32,System.Int32)">
+            <summary>
+            Add a single item into the shopping cart. If the item already exists, increase the quantity by one
+            </summary>
+            <param name="userId"></param>
+            <param name="bookId"></param>
+            <returns>Count of items in the shopping cart</returns>
+        </member>
+        <member name="M:API.Controllers.ShoppingCartController.Put(System.Int32,System.Int32)">
+            <summary>
+            Reduces the quantity by one for an item in shopping cart
+            </summary>
+            <param name="userId"></param>
+            <param name="bookId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.ShoppingCartController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Delete a single item from the cart 
+            </summary>
+            <param name="userId"></param>
+            <param name="bookId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.ShoppingCartController.Delete(System.Int32)">
+            <summary>
+            Clear the shopping cart
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
         <member name="P:API.Helpers.BooksResourceParameters.Category">
             <summary>
             Filter by Category

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using API.Models;
 
-namespace API.Models
+namespace API.models
 {
     public partial class BookCartContext : DbContext
     {
@@ -17,6 +18,8 @@ namespace API.Models
         }
 
         public virtual DbSet<Book> Books { get; set; } = null!;
+        public virtual DbSet<Cart> Cart { get; set; } = null!;
+        public virtual DbSet<CartItems> CartItems { get; set; } = null!;
         public virtual DbSet<Categories> Categories { get; set; } = null!;
 
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -55,6 +58,36 @@ namespace API.Models
                 entity.Property(e => e.Title)
                     .HasMaxLength(100)
                     .HasColumnName("title");
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.ToTable("cart");
+
+                entity.Property(e => e.CartId)
+                    .HasMaxLength(36)
+                    .HasColumnName("cartid");
+
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("timestamp without time zone")
+                    .HasColumnName("datecreated");
+
+                entity.Property(e => e.UserId).HasColumnName("userid");
+            });
+
+            modelBuilder.Entity<CartItems>(entity =>
+            {
+                entity.ToTable("cartitems");
+
+                entity.Property(e => e.CartItemId).HasColumnName("cartitemid");
+
+                entity.Property(e => e.CartId)
+                    .HasMaxLength(36)
+                    .HasColumnName("cartid");
+
+                entity.Property(e => e.ProductId).HasColumnName("productid");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
             });
 
             modelBuilder.Entity<Categories>(entity =>

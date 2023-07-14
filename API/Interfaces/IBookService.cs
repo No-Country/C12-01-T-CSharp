@@ -1,4 +1,5 @@
-﻿using API.Helpers;
+﻿using API.Dtos;
+using API.Helpers;
 using API.Models;
 
 namespace API.Interfaces
@@ -10,10 +11,16 @@ namespace API.Interfaces
 
         Task<List<Categories>> GetAllCategories();
         Task<bool> IsValidCategory(string category);
+
+
         Task<Categories?> GetCategoryById(int id);
 
         Task<List<Book>> GetFiveRandomBooksFromSimilarCategory(Categories category);
+
+
+        Task<List<CartItemDto>> GetBooksAvailableInCart(string cartId);
+
     }
 
-    
+
 }

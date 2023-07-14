@@ -1,5 +1,7 @@
-﻿using API.Helpers;
+﻿using API.Dtos;
+using API.Helpers;
 using API.Interfaces;
+using API.models;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -81,6 +83,41 @@ namespace API.DataAccess
                
 
             return randomBooks;
+        }
+
+
+
+
+
+        public async Task<List<CartItemDto>> GetBooksAvailableInCart(string cartId)
+        {
+            List<CartItemDto> cartItemList = new List<CartItemDto>();
+            List<CartItems> cartItems = await _dbContext.CartItems.Where(x => x.CartId == cartId).ToListAsync();
+
+            foreach (CartItems item in cartItems)
+            {
+                Book book = await GetBookData(item.ProductId);
+                CartItemDto objCartItem = new CartItemDto
+                {
+                    Book = book,
+                    Quantity = item.Quantity
+                };
+
+                cartItemList.Add(objCartItem);
+            }
+            return cartItemList;
+        }
+
+
+        public async Task<Book> GetBookData(int bookId)
+        {
+            Book book = await _dbContext.Books.FirstOrDefaultAsync(x => x.BookId == bookId);
+            if (book != null)
+            {
+                 _dbContext.Entry(book).State = EntityState.Detached;
+                return book;
+            }
+            return null;
         }
     }
 }
