@@ -43,3 +43,29 @@ INSERT INTO Categories (CategoryName) VALUES ('Fantasía');
 INSERT INTO Categories (CategoryName) VALUES ('Ciencia Ficción');
 
 
+CREATE TABLE Cart (
+    CartId  varchar(36) PRIMARY KEY,
+    UserID int NOT NULL,
+    DateCreated timestamp NOT NULL
+);
+
+CREATE TABLE CartItems (
+    CartItemId SERIAL PRIMARY KEY,
+    CartId varchar(36) NOT NULL,
+    ProductId int NOT NULL,
+    Quantity int NOT NULL
+);
+
+
+CREATE TABLE Cart (
+    CartId  varchar(36) PRIMARY KEY,
+    UserID int NOT NULL,
+    DateCreated timestamp NOT NULL
+);
+
+CREATE TABLE CartItems (
+    CartItemId SERIAL PRIMARY KEY,
+    CartId varchar(36) NOT NULL,
+    ProductId int NOT NULL,
+    Quantity int NOT NULL
+);
