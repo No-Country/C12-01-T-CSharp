@@ -1,4 +1,4 @@
-CREATE TABLE Book (
+CREATE TABLE Book   (
     BookID SERIAL PRIMARY KEY,
     Title varchar(100) NOT NULL,
     Author varchar(100) NOT NULL,
@@ -9,26 +9,26 @@ CREATE TABLE Book (
 
 INSERT INTO Book (Title, Author, Category, Price, CoverFileName)
 VALUES
-    ('Matar a un ruise駉r', 'Harper Lee', 'Ficci髇', 25.99, 'images/Matar-a-un-ruisenor.jpg'),
-    ('1984', 'George Orwell', 'Ficci髇', 19.99, 'images/1984.jpg'),
-    ('El gran Gatsby', 'F. Scott Fitzgerald', 'Ficci髇', 15.99, 'images/El-gran-Gatsby.jpg'),
-    ('El guardi醤 entre el centeno', 'J.D. Salinger', 'Ficci髇', 12.99, 'images/El-guardian-entre-el-centeno.jpg'),
-    ('Orgullo y prejuicio', 'Jane Austen', 'Ficci髇', 14.99, 'images/Orgullo-y-prejuicio.jpg'),
-    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Fantas韆', 29.99, 'images/Harry-Potter-y-la-piedra-filosofal.jpg'),
-    ('El hobbit', 'J.R.R. Tolkien', 'Fantas韆', 24.99, 'images/El-hobbit.jpg'),
-    ('El c骴igo Da Vinci', 'Dan Brown', 'Misterio', 18.99, 'images/El-codigo-Da-Vinci.jpg'),
-    ('Los juegos del hambre', 'Suzanne Collins', 'J髒enes Adultos', 16.99, 'images/Los-juegos-del-hambre.jpg'),
-    ('El alquimista', 'Paulo Coelho', 'Ficci髇', 12.99, 'images/El-alquimista.jpg'),
-    ('El se駉r de los anillos', 'J.R.R. Tolkien', 'Fantas韆', 34.99, 'images/El-senor-de-los-anillos.jpg'),
-    ('Matar a un reino', 'Alexandra Christo', 'J髒enes Adultos', 14.99, 'images/Matar-a-un-reino.jpg'),
+    ('Matar a un ruise帽or', 'Harper Lee', 'Ficci贸n', 25.99, 'images/Matar-a-un-ruisenor.jpg'),
+    ('1984', 'George Orwell', 'Ficci贸n', 19.99, 'images/1984.jpg'),
+    ('El gran Gatsby', 'F. Scott Fitzgerald', 'Ficci贸n', 15.99, 'images/El-gran-Gatsby.jpg'),
+    ('El guardi谩n entre el centeno', 'J.D. Salinger', 'Ficci贸n', 12.99, 'images/El-guardian-entre-el-centeno.jpg'),
+    ('Orgullo y prejuicio', '  Jane Austen', 'Ficci贸n', 14.99, 'images/Orgullo-y-prejuicio.jpg'),
+    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Fantas铆a', 29.99, 'images/Harry-Potter-y-la-piedra-filosofal.jpg'),
+    ('El hobbit', 'J.R.R. Tolkien', 'Fantas铆a', 24.99, 'images/El-hobbit.jpg'),
+    ('El c贸digo Da Vinci', 'Dan Brown', 'Misterio', 18.99, 'images/El-codigo-Da-Vinci.jpg'),
+    ('Los juegos del hambre', 'Suzanne Collins', 'J贸venes Adultos', 16.99, 'images/Los-juegos-del-hambre.jpg'),
+    ('El alquimista', 'Paulo Coelho', 'Ficci贸n', 12.99, 'images/El-alquimista.jpg'),
+    ('El se帽or de los anillos', 'J.R.R. Tolkien', 'Fantas铆a', 34.99, 'images/El-senor-de-los-anillos.jpg'),
+    ('Matar a un reino', 'Alexandra Christo', 'J贸venes Adultos', 14.99, 'images/Matar-a-un-reino.jpg'),
     ('La chica del tren', 'Paula Hawkins', 'Misterio', 17.99, 'images/La-chica-del-tren.jpg'),
-    ('Las cr髇icas de Narnia', 'C.S. Lewis', 'Fantas韆', 28.99, 'images/Las-cronicas-de-Narnia.jpg'),
-    ('Bajo la misma estrella', 'John Green', 'J髒enes Adultos', 13.99, 'images/Bajo-la-misma-estrella.jpg'),
+    ('Las cr贸nicas de Narnia', 'C.S. Lewis', 'Fantas铆a', 28.99, 'images/Las-cronicas-de-Narnia.jpg'),
+    ('Bajo la misma estrella', 'John Green', 'J贸venes Adultos', 13.99, 'images/Bajo-la-misma-estrella.jpg'),
     ('El resplandor', 'Stephen King', 'Terror', 21.99, 'images/El-resplandor.jpg'),
     ('Perdida', 'Gillian Flynn', 'Misterio', 16.99, 'images/Perdida.jpg'),
-    ('La vida secreta de las abejas', 'Sue Monk Kidd', 'Ficci髇', 19.99, 'images/La-vida-secreta-de-las-abejas.jpg'),
-    ('El corredor del laberinto', 'James Dashner', 'J髒enes Adultos', 15.99, 'images/El-corredor-del-laberinto.jpg'),
-    ('Dune', 'Frank Herbert', 'Ciencia Ficci髇', 23.99, 'images/Dune.jpg');
+    ('La vida secreta de las abejas', 'Sue Monk Kidd', 'Ficci贸n', 19.99, 'images/La-vida-secreta-de-las-abejas.jpg'),
+    ('El corredor del laberinto', 'James Dashner', 'J贸venes Adultos', 15.99, 'images/El-corredor-del-laberinto.jpg'),
+    ('Dune', 'Frank Herbert', 'Ciencia Ficci贸n', 23.99, 'images/Dune.jpg');
 
 CREATE TABLE Categories (
     CategoryID SERIAL PRIMARY KEY,
@@ -36,11 +36,11 @@ CREATE TABLE Categories (
 );
 
 INSERT INTO Categories (CategoryName) VALUES ('Terror');
-INSERT INTO Categories (CategoryName) VALUES ('Ficci髇');
+INSERT INTO Categories (CategoryName) VALUES ('Ficci贸n');
 INSERT INTO Categories (CategoryName) VALUES ('Misterio');
-INSERT INTO Categories (CategoryName) VALUES ('J髒enes Adultos');
-INSERT INTO Categories (CategoryName) VALUES ('Fantas韆');
-INSERT INTO Categories (CategoryName) VALUES ('Ciencia Ficci髇');
+INSERT INTO Categories (CategoryName) VALUES ('J贸venes Adultos');
+INSERT INTO Categories (CategoryName) VALUES ('Fantas铆a');
+INSERT INTO Categories (CategoryName) VALUES ('Ciencia Ficci贸n');
 
 
 CREATE TABLE Cart (
