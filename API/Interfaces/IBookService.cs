@@ -20,6 +20,10 @@ namespace API.Interfaces
 
         Task<List<CartItemDto>> GetBooksAvailableInCart(string cartId);
 
+        Task<List<Book>> GetBooksAvailableInWishlist(string wishlistID);
+
+        Task<List<Book>> GetSimilarBooks(int bookId);
+
     }
 
 

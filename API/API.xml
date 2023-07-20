@@ -4,27 +4,6 @@
         <name>API</name>
     </assembly>
     <members>
-        <member name="M:API.Controllers.AccountController.Register(API.Dtos.RegisterDto)">
-            <summary>
-            Sign in
-            </summary>
-            <param name="registerDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.AccountController.Login(API.Dtos.LoginDto)">
-            <summary>
-            Log in
-            </summary>
-            <param name="loginDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Controllers.AccountController.CheckEmailExistsAsync(System.String)">
-            <summary>
-            Check if the email exists
-            </summary>
-            <param name="email"></param>
-            <returns></returns>
-        </member>
         <member name="M:API.Controllers.BookController.GetBooks(API.Helpers.BooksResourceParameters)">
             <summary>
             Get all books
@@ -44,11 +23,33 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:API.Controllers.BookController.GetFiveRandomBooksFromSimilarCategory(System.Int32)">
+        <member name="M:API.Controllers.BookController.SimilarBooks(System.Int32)">
             <summary>
-            Get five random books from a similar category
+            Get the random five books from the category of book whose BookId is supplied
             </summary>
-            <param name="CategoryId"></param>
+            <param name="bookId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.CheckOutController.Post(System.Int32,API.Dtos.OrdersDto)">
+            <summary>
+            Checkout from shopping cart
+            </summary>
+            <param name="userId"></param>
+            <param name="checkedOutItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.LoginController.Login(API.Models.UserMaster)">
+            <summary>
+            Login to the application
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.OrderController.Get(System.Int32)">
+            <summary>
+            Get the list of all the orders placed by a particular user
+            </summary>
+            <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="M:API.Controllers.ShoppingCartController.Get(System.Int32,System.Int32)">
@@ -93,6 +94,48 @@
         <member name="M:API.Controllers.ShoppingCartController.Delete(System.Int32)">
             <summary>
             Clear the shopping cart
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.UserController.Get(System.Int32)">
+            <summary>
+            Get the count of item in the shopping cart
+            </summary>
+            <param name="userId"></param>
+            <returns>The count of items in shopping cart</returns>
+        </member>
+        <member name="M:API.Controllers.UserController.ValidateUserName(System.String)">
+            <summary>
+            Check the availability of the username
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.UserController.Post(API.Models.UserMaster)">
+            <summary>
+            Register a new user
+            </summary>
+            <param name="userData"></param>
+        </member>
+        <member name="M:API.Controllers.WishlistController.Get(System.Int32)">
+            <summary>
+            Get the list of items in the Wishlist
+            </summary>
+            <param name="userId"></param>
+            <returns>All the items in the Wishlist</returns>
+        </member>
+        <member name="M:API.Controllers.WishlistController.Post(System.Int32,System.Int32)">
+            <summary>
+            Toggle the items in Wishlist. If item doesn't exists, it will be added to the Wishlist else it will be removed.
+            </summary>
+            <param name="userId"></param>
+            <param name="bookId"></param>
+            <returns>All the items in the Wishlist</returns>
+        </member>
+        <member name="M:API.Controllers.WishlistController.Delete(System.Int32)">
+            <summary>
+            Clear the Wishlist
             </summary>
             <param name="userId"></param>
             <returns></returns>

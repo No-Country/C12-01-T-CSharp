@@ -56,16 +56,52 @@ CREATE TABLE CartItems (
     Quantity int NOT NULL
 );
 
+CREATE TABLE CustomerOrders (
+    OrderId varchar(20) PRIMARY KEY,
+    UserID int NOT NULL,
+    DateCreated timestamp NOT NULL,
+    CartTotal Decimal(10, 2) NOT NULL
+);
 
-CREATE TABLE Cart (
-    CartId  varchar(36) PRIMARY KEY,
+CREATE TABLE CustomerOrderDetails (
+    OrderDetailsId SERIAL PRIMARY KEY,
+    OrderId varchar(20) NOT NULL,
+    ProductId int NOT NULL,
+    Quantity int NOT NULL,
+    Price decimal(10, 2) NOT NULL
+);
+
+CREATE TABLE Wishlist (
+    WishlistId varchar(36) PRIMARY KEY,
     UserID int NOT NULL,
     DateCreated timestamp NOT NULL
 );
 
-CREATE TABLE CartItems (
-    CartItemId SERIAL PRIMARY KEY,
-    CartId varchar(36) NOT NULL,
-    ProductId int NOT NULL,
-    Quantity int NOT NULL
+CREATE TABLE WishlistItems (
+    WishlistItemId SERIAL PRIMARY KEY,
+    WishlistId varchar(36) NOT NULL,
+    ProductId int NOT NULL
 );
+
+        // Users
+
+CREATE TABLE UserType (
+    UserTypeID SERIAL PRIMARY KEY,
+    UserTypeName varchar(20) NOT NULL
+);
+
+INSERT INTO UserType (UserTypeName) VALUES ('Admin');
+INSERT INTO UserType (UserTypeName) VALUES ('User');
+
+CREATE TABLE UserMaster (
+    UserID SERIAL PRIMARY KEY,
+    FirstName varchar(20) NOT NULL,
+    LastName varchar(20) NOT NULL,
+    Username varchar(20) NOT NULL,
+    Password varchar(40) NOT NULL,
+    Gender varchar(6) NOT NULL,
+    UserTypeID int NOT NULL
+);
+
+INSERT INTO UserMaster (FirstName, LastName, Username, Password, Gender, UserTypeID)
+VALUES ('Jhonatan', 'Larico', 'adminuser', 'Pa55w0rd!', 'Male', 1);

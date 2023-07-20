@@ -25,7 +25,7 @@ namespace API.Controllers
         /// <param name="oldUserId"></param>
         /// <param name="newUserId"></param>
         /// <returns>The count of items in shopping cart</returns>
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         [Route("SetShoppingCart/{oldUserId}/{newUserId}")]
         public async Task<int> Get(int oldUserId, int newUserId)

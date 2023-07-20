@@ -119,5 +119,36 @@ namespace API.DataAccess
             }
             return null;
         }
+
+
+
+        public async  Task<List<Book>> GetBooksAvailableInWishlist(string wishlistID)
+        {
+            List<Book> wishlist = new List<Book>();
+            List<WishlistItems> cartItems = _dbContext.WishlistItems.Where(x => x.WishlistId == wishlistID).ToList();
+
+            foreach (WishlistItems item in cartItems)
+            {
+                Book book = await GetBookData(item.ProductId);
+                wishlist.Add(book);
+            }
+            return wishlist;
+        }
+
+
+        public async Task<List<Book>> GetSimilarBooks(int bookId)
+        {   
+            Random random = new Random();
+            List<Book> lstBook = new List<Book>();
+            Book book = await GetBookData(bookId);
+
+            lstBook =   await _dbContext.Books.Where(x => x.Category == book.Category && x.BookId != book.BookId).ToListAsync();
+            lstBook = lstBook.OrderBy(b => random.Next()).Take(5).ToList();
+
+                
+            return lstBook;
+        }
     }
 }
+
+

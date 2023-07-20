@@ -21,15 +21,14 @@ namespace API.models
         public virtual DbSet<Cart> Cart { get; set; } = null!;
         public virtual DbSet<CartItems> CartItems { get; set; } = null!;
         public virtual DbSet<Categories> Categories { get; set; } = null!;
+        public virtual DbSet<CustomerOrders> CustomerOrders { get; set; } = null!;
+        public virtual DbSet<CustomerOrderDetails> CustomerOrderDetails { get; set; } = null!;
+        public virtual DbSet<UserMaster> UserMaster { get; set; } = null!;
+        public virtual DbSet<Usertype> UserType { get; set; } = null!;
+        public virtual DbSet<Wishlist> Wishlist { get; set; } = null!;
+        public virtual DbSet<WishlistItems> WishlistItems { get; set; } = null!;
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//                optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=BookCart;User Id=postgres;Password=Pa55w0rd!");
-//            }
-//        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,7 +46,7 @@ namespace API.models
                     .HasMaxLength(20)
                     .HasColumnName("category");
 
-                entity.Property(e => e.coverFileName)
+                entity.Property(e => e.CoverFileName)
                     .HasMaxLength(100)
                     .HasColumnName("coverfilename");
 
@@ -99,6 +98,121 @@ namespace API.models
                 entity.Property(e => e.CategoryName)
                     .HasMaxLength(20)
                     .HasColumnName("categoryname");
+            });
+
+            modelBuilder.Entity<CustomerOrders>(entity =>
+            {
+                entity.HasKey(e => e.OrderId)
+                    .HasName("customerorders_pkey");
+
+                entity.ToTable("customerorders");
+
+                entity.Property(e => e.OrderId)
+                    .HasMaxLength(20)
+                    .HasColumnName("orderid");
+
+                entity.Property(e => e.CartTotal)
+                    .HasPrecision(10, 2)
+                    .HasColumnName("carttotal");
+
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("timestamp without time zone")
+                    .HasColumnName("datecreated");
+
+                entity.Property(e => e.UserId).HasColumnName("userid");
+            });
+
+            modelBuilder.Entity<CustomerOrderDetails>(entity =>
+            {
+                entity.HasKey(e => e.OrderDetailsId)
+                    .HasName("customerorderdetails_pkey");
+
+                entity.ToTable("customerorderdetails");
+
+                entity.Property(e => e.OrderDetailsId).HasColumnName("orderdetailsid");
+
+                entity.Property(e => e.OrderId)
+                    .HasMaxLength(20)
+                    .HasColumnName("orderid");
+
+                entity.Property(e => e.Price)
+                    .HasPrecision(10, 2)
+                    .HasColumnName("price");
+
+                entity.Property(e => e.ProductId).HasColumnName("productid");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+            });
+
+            modelBuilder.Entity<UserMaster>(entity =>
+            {
+                entity.HasKey(e => e.UserId)
+                    .HasName("usermaster_pkey");
+
+                entity.ToTable("usermaster");
+
+                entity.Property(e => e.UserId).HasColumnName("userid");
+
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(20)
+                    .HasColumnName("firstname");
+
+                entity.Property(e => e.Gender)
+                    .HasMaxLength(6)
+                    .HasColumnName("gender");
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(20)
+                    .HasColumnName("lastname");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(40)
+                    .HasColumnName("password");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(20)
+                    .HasColumnName("username");
+
+                entity.Property(e => e.UserTypeId).HasColumnName("usertypeid");
+            });
+
+            modelBuilder.Entity<Usertype>(entity =>
+            {
+                entity.ToTable("usertype");
+
+                entity.Property(e => e.UserTypeId).HasColumnName("usertypeid");
+
+                entity.Property(e => e.UserTypeName)
+                    .HasMaxLength(20)
+                    .HasColumnName("usertypename");
+            });
+
+            modelBuilder.Entity<Wishlist>(entity =>
+            {
+                entity.ToTable("wishlist");
+
+                entity.Property(e => e.WishlistId)
+                    .HasMaxLength(36)
+                    .HasColumnName("wishlistid");
+
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("timestamp without time zone")
+                    .HasColumnName("datecreated");
+
+                entity.Property(e => e.UserId).HasColumnName("userid");
+            });
+
+            modelBuilder.Entity<WishlistItems>(entity =>
+            {
+                entity.ToTable("wishlistitems");
+
+                entity.Property(e => e.WishlistItemId).HasColumnName("wishlistitemid");
+
+                entity.Property(e => e.ProductId).HasColumnName("productid");
+
+                entity.Property(e => e.WishlistId)
+                    .HasMaxLength(36)
+                    .HasColumnName("wishlistid");
             });
 
             OnModelCreatingPartial(modelBuilder);
