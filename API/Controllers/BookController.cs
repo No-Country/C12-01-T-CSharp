@@ -87,7 +87,11 @@ namespace API.Controllers
         [Route("GetSimilarBooks/{bookId}")]
         public async Task<List<Book>> SimilarBooks(int bookId)
         {
-            return await _bookService.GetSimilarBooks(bookId);
+            
+            var  books = await _bookService.GetSimilarBooks(bookId);
+            books.ForEach(e =>  e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
+
+            return books;
         }
 
     }
