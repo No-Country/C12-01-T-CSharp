@@ -19,6 +19,7 @@ export class AuthenticationService {
   login(user) {
     return this.http.post<any>('https://mercadolibro-api.app.csharpjourney.com/api/login', user)
       .pipe(map(response => {
+        console.log('okia');
         if (response && response.token) {
           this.oldUserId = localStorage.getItem('userId');
           localStorage.setItem('authToken', response.token);
