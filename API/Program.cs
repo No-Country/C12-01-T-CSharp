@@ -117,6 +117,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
     });
 
+<<<<<<< HEAD
+=======
 
 
 builder.Services.AddAuthorization(config =>
@@ -126,6 +128,7 @@ builder.Services.AddAuthorization(config =>
 });
 
 
+>>>>>>> bd583be7027f76480ca5c4d74d8ee2d4028e7679
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(MyAllowSpecificOrigins,
@@ -138,6 +141,10 @@ builder.Services.AddCors(options =>
                           });
 });
 
+<<<<<<< HEAD
+builder.Services.AddAuthorization();
+=======
+>>>>>>> bd583be7027f76480ca5c4d74d8ee2d4028e7679
 
 
 var app = builder.Build();
@@ -155,8 +162,13 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 
 app.UseStaticFiles();
 
+<<<<<<< HEAD
+ 
+app.UseCors("CorsPolicy");
+=======
 
 app.UseCors(MyAllowSpecificOrigins);
+>>>>>>> bd583be7027f76480ca5c4d74d8ee2d4028e7679
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
