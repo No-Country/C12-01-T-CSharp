@@ -1,5 +1,7 @@
-﻿using API.Helpers;
+﻿using API.Dtos;
+using API.Helpers;
 using API.Interfaces;
+using API.models;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -82,5 +84,71 @@ namespace API.DataAccess
 
             return randomBooks;
         }
+
+
+
+
+
+        public async Task<List<CartItemDto>> GetBooksAvailableInCart(string cartId)
+        {
+            List<CartItemDto> cartItemList = new List<CartItemDto>();
+            List<CartItems> cartItems = await _dbContext.CartItems.Where(x => x.CartId == cartId).ToListAsync();
+
+            foreach (CartItems item in cartItems)
+            {
+                Book book = await GetBookData(item.ProductId);
+                CartItemDto objCartItem = new CartItemDto
+                {
+                    Book = book,
+                    Quantity = item.Quantity
+                };
+
+                cartItemList.Add(objCartItem);
+            }
+            return cartItemList;
+        }
+
+
+        public async Task<Book> GetBookData(int bookId)
+        {
+            Book book = await _dbContext.Books.FirstOrDefaultAsync(x => x.BookId == bookId);
+            if (book != null)
+            {
+                 _dbContext.Entry(book).State = EntityState.Detached;
+                return book;
+            }
+            return null;
+        }
+
+
+
+        public async  Task<List<Book>> GetBooksAvailableInWishlist(string wishlistID)
+        {
+            List<Book> wishlist = new List<Book>();
+            List<WishlistItems> cartItems = _dbContext.WishlistItems.Where(x => x.WishlistId == wishlistID).ToList();
+
+            foreach (WishlistItems item in cartItems)
+            {
+                Book book = await GetBookData(item.ProductId);
+                wishlist.Add(book);
+            }
+            return wishlist;
+        }
+
+
+        public async Task<List<Book>> GetSimilarBooks(int bookId)
+        {   
+            Random random = new Random();
+            List<Book> lstBook = new List<Book>();
+            Book book = await GetBookData(bookId);
+
+            lstBook =   await _dbContext.Books.Where(x => x.Category == book.Category && x.BookId != book.BookId).ToListAsync();
+            lstBook = lstBook.OrderBy(b => random.Next()).Take(5).ToList();
+
+                
+            return lstBook;
+        }
     }
 }
+
+

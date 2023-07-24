@@ -41,7 +41,7 @@ namespace API.Controllers
 
             if (books.Count == 0) return NotFound($"No se encontro '{parameters.Search}' en Title ni en Author");
             
-            books.ForEach(e =>  e.coverFileName = _configuration["ApiUrl"] + e.coverFileName);
+            books.ForEach(e =>  e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
             
             return books;
         }
@@ -59,7 +59,7 @@ namespace API.Controllers
 
             if (book == null) return BadRequest();
 
-            book.coverFileName = _configuration["ApiUrl"] + book.coverFileName;
+            book.CoverFileName = _configuration["ApiUrl"] + book.CoverFileName;
 
             return Ok(book);
         }
@@ -77,26 +77,22 @@ namespace API.Controllers
             return Ok(categories);
         }
 
+
         /// <summary>
-        /// Get five random books from a similar category
+        /// Get the random five books from the category of book whose BookId is supplied
         /// </summary>
-        /// <param name="CategoryId"></param>
+        /// <param name="bookId"></param>
         /// <returns></returns>
-        [Route("GetSimilarBooks/{CategoryId}")]
         [HttpGet]
-        public async Task<ActionResult<Book>> GetFiveRandomBooksFromSimilarCategory(int CategoryId)
+        [Route("GetSimilarBooks/{bookId}")]
+        public async Task<List<Book>> SimilarBooks(int bookId)
         {
-            Categories? category = await _bookService.GetCategoryById(CategoryId);
+            
+            var  books = await _bookService.GetSimilarBooks(bookId);
+            books.ForEach(e =>  e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
 
-            if (category == null) return BadRequest();
-
-
-            List<Book> books = await _bookService.GetFiveRandomBooksFromSimilarCategory(category);
-            books.ForEach(e => e.coverFileName = _configuration["ApiUrl"] + e.coverFileName);
-
-            return Ok(books);
+            return books;
         }
-
 
     }
 }
