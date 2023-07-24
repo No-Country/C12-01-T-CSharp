@@ -14,11 +14,14 @@ namespace API.Controllers
         readonly IBookService _bookService;
         readonly IUserService _userService;
 
-        public WishlistController(IWishlistService wishlistService, IBookService bookService, IUserService userService)
+        readonly IConfiguration _configuration;
+
+        public WishlistController(IWishlistService wishlistService, IBookService bookService, IUserService userService, IConfiguration config)
         {
             _wishlistService = wishlistService;
             _bookService = bookService;
             _userService = userService;
+            _configuration = config;
         }
 
         /// <summary>
@@ -28,8 +31,11 @@ namespace API.Controllers
         /// <returns>All the items in the Wishlist</returns>
         [HttpGet("{userId}")]
         public async Task<List<Book>> Get(int userId)
-        {
-            return await GetUserWishlist(userId);
+        {   
+            var books = await GetUserWishlist(userId);
+            books.ForEach(e => e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
+
+            return books;
         }
 
         /// <summary>
@@ -44,7 +50,11 @@ namespace API.Controllers
         public async Task<List<Book>> Post(int userId, int bookId)
         {
             _wishlistService.ToggleWishlistItem(userId, bookId);
-            return await GetUserWishlist(userId);
+
+            var books = await GetUserWishlist(userId);
+            books.ForEach(e => e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
+
+            return books;
         }
 
         /// <summary>

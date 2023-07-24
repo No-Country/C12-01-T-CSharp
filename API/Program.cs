@@ -59,6 +59,8 @@ builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddTransient<IOrderService, OrderDataAccessLayer>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWishlistService, WishlistDataAccessLayer>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 // Identity
 //builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 //{

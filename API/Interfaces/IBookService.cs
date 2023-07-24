@@ -24,6 +24,9 @@ namespace API.Interfaces
 
         Task<List<Book>> GetSimilarBooks(int bookId);
 
+        int AddBook(Book book);
+
+
     }
 
 

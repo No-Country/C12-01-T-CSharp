@@ -4,6 +4,7 @@ using API.Interfaces;
 using API.models;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace API.DataAccess
 {
@@ -11,10 +12,11 @@ namespace API.DataAccess
     public class BookService : IBookService
     {
         private readonly BookCartContext _dbContext;
-
-        public BookService(BookCartContext dbContext)
+        private readonly IConfiguration _configuration;
+        public BookService(BookCartContext dbContext, IConfiguration config)
         {
             _dbContext = dbContext;
+            _configuration = config;
         }
         public async Task<List<Book>> GetAllBooks(BooksResourceParameters parameters)
         {
@@ -97,6 +99,8 @@ namespace API.DataAccess
             foreach (CartItems item in cartItems)
             {
                 Book book = await GetBookData(item.ProductId);
+                book.CoverFileName = _configuration["ApiUrl"] + book.CoverFileName;
+
                 CartItemDto objCartItem = new CartItemDto
                 {
                     Book = book,
@@ -147,6 +151,22 @@ namespace API.DataAccess
 
                 
             return lstBook;
+        }
+
+
+        public int AddBook(Book book)
+        {
+            try
+            {
+                _dbContext.Books.Add(book);
+                _dbContext.SaveChanges();
+
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

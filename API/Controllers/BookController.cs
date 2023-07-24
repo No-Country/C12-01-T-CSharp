@@ -1,9 +1,8 @@
 ﻿using API.Helpers;
 using API.Interfaces;
 using API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static System.Reflection.Metadata.BlobBuilder;
+using API.Dtos;
 
 namespace API.Controllers
 {
@@ -13,10 +12,21 @@ namespace API.Controllers
     {
         private readonly IBookService _bookService;
         private readonly IConfiguration _configuration;
-        public BookController(IBookService bookService, IConfiguration configuration)
+
+       
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+
+        public BookController(IBookService bookService, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _bookService = bookService;
-            _configuration = configuration;
+            _configuration = configuration;      
+
+
+            _httpContextAccessor = httpContextAccessor;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -94,5 +104,30 @@ namespace API.Controllers
             return books;
         }
 
+        [HttpPost]
+        public IActionResult CreateEmployee([FromBody] BookToCreateDto book)
+        {
+            if (book == null)
+                return BadRequest();
+
+            //handle image upload
+            var path = $"{_webHostEnvironment.WebRootPath}\\images\\{book.Title}.jpg";
+            var fileStream = System.IO.File.Create(path);
+            fileStream.Write(book.CoverFileContent, 0, book.CoverFileContent.Length);
+            fileStream.Close();
+
+            Book bookToAdd = new Book()
+            {
+                Title = book.Title,
+                Author = book.Author,
+                Category = book.Category,
+                Price = book.Price,
+                CoverFileName = $"images/{book.Title}.jpg"
+            };
+
+            var createdBook = _bookService.AddBook(bookToAdd);
+
+            return Created("book", createdBook);
+        }        
     }
 }
