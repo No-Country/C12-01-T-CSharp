@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -117,19 +118,26 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 
+
 builder.Services.AddAuthorization(config =>
 {
     config.AddPolicy(UserRoles.Admin, Policies.AdminPolicy());
     config.AddPolicy(UserRoles.User, Policies.UserPolicy());
 });
+
+
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyMethod();
-    });
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              policy.WithOrigins("https://mercadolibro.vercel.app",
+                                                  "http://localhost:4200")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
 });
+
 
 
 var app = builder.Build();
@@ -148,7 +156,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 app.UseStaticFiles();
 
 
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
