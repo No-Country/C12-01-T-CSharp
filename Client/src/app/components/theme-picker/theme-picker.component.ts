@@ -17,25 +17,25 @@ export class ThemePickerComponent implements OnInit {
     {
       primary: '#673AB7',
       accent: '#FFC107',
-      displayName: 'Deep Purple & Amber',
+      displayName: 'Morado Oscuro y Ámbar',
       name: 'deeppurple-amber',
     },
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      displayName: 'Indigo & Pink',
+      displayName: 'Indigo & Rosa',
       name: 'indigo-pink',
     },
     {
       primary: '#E91E63',
       accent: '#607D8B',
-      displayName: 'Pink & Blue-grey',
+      displayName: 'Rosa & Gris-Azulado',
       name: 'pink-bluegrey',
     },
     {
       primary: '#9C27B0',
       accent: '#4CAF50',
-      displayName: 'Purple & Green',
+      displayName: 'Morado & Verde',
       name: 'purple-green',
     },
   ];

@@ -5,7 +5,7 @@
             aria-label="Book title"><img class="preview-image" mat-card-image src="{{book.coverFileName}}"
                 alt="Book cover image"></a>
         <div *ngIf="(userData$ | async).isLoggedIn" class="favourite mat-elevation-z4">
-            <!-- <app-addtowishlist [bookId]="book.bookId"></app-addtowishlist> -->
+            <app-addtowishlist [bookId]="book.bookId"></app-addtowishlist>
         </div>
 
     </mat-card-content>
@@ -16,6 +16,6 @@
             </a>
         </div>
         <p>{{book.price | currency : 'USD'}}</p>
-        <!-- <app-addtocart [bookId]="book.bookId"></app-addtocart> -->
+        <app-addtocart [bookId]="book.bookId"></app-addtocart>
     </mat-card-content>
 </mat-card>

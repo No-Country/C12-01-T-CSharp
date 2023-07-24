@@ -17,7 +17,10 @@ export class AuthenticationService {
     private subscriptionService: SubscriptionService) { }
 
   login(user) {
-    return this.http.post<any>('https://mercadolibro-api.app.csharpjourney.com/api/login', user)
+    user.firstName = 'string';
+    user.lastName = 'string';
+    user.gender = 'string';
+    return this.http.post<any>('https://mercadolibro-api.app.csharpjourney.com/api/Login', user)
       .pipe(map(response => {
         if (response && response.token) {
           this.oldUserId = localStorage.getItem('userId');

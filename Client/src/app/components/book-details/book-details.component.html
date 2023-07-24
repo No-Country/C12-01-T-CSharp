@@ -1,7 +1,7 @@
 <div class="docs-example-viewer-wrapper">
     <div class="docs-example-viewer-title mat-elevation-z2">
         <div class="docs-example-viewer-title-spacer">
-            <h2>Detalles</h2>
+            <h2>Detalles del Libro</h2>
         </div>
     </div>
     <div class="docs-example-viewer-body row" *ngIf="BookDetails$ | async as book">
@@ -13,7 +13,7 @@
         <div class="col-md-5 col-sm-12">
             <table class="table">
                 <tr>
-                    <td><strong>Titulo</strong></td>
+                    <td><strong>Título</strong></td>
                     <td>{{book.title}}</td>
                 </tr>
                 <tr>
@@ -30,9 +30,9 @@
                 </tr>
             </table>
             <div fxLayoutGap="10px grid">
-                <!-- <app-addtocart class="mr-2" [bookId]="bookId"></app-addtocart>
+                <app-addtocart class="mr-2" [bookId]="bookId"></app-addtocart>
                 <app-addtowishlist *ngIf="(userData$ | async).isLoggedIn" [bookId]="bookId" [showButton]="true">
-                </app-addtowishlist> -->
+                </app-addtowishlist>
             </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export class PriceFilterComponent implements OnInit {
   max: number;
   min: number;
   value: number;
-  step = 5.00;
+  step = 100;
   thumbLabel = true;
 
   constructor(private bookService: BookService) { }
@@ -37,7 +37,7 @@ export class PriceFilterComponent implements OnInit {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
     }
-    return Math.round(value);
+    return value;
   }
 
   onChange(event) {

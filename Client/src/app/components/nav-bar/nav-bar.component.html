@@ -2,8 +2,7 @@
     <mat-toolbar-row>
         <div class="brand-title">
             <button mat-button [routerLink]='["/"]'>
-                <mat-icon>book</mat-icon>
-                Mercado Libro
+                <mat-icon>book</mat-icon> Mercado Libro
             </button>
         </div>
         <div>
@@ -27,11 +26,11 @@
                     <mat-icon>account_circle</mat-icon> {{userData.username}} <mat-icon>arrow_drop_down</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item [routerLink]='["/myorders"]'>My Orders</button>
+                    <button mat-menu-item [routerLink]='["/myorders"]'>Mis Pedidos</button>
                     <button mat-menu-item (click)=logout()>Logout</button>
                 </mat-menu>
             </ng-container>
-            <!-- <app-theme-picker></app-theme-picker> -->
+            <app-theme-picker></app-theme-picker>
             <button mat-button>
                 <a class="github-link" href="https://mercadolibro-api.app.csharpjourney.com/index.html" target="_blank">
                     <span><img src="https://static1.smartbear.co/swagger/media/assets/swagger_fav.png" /></span>

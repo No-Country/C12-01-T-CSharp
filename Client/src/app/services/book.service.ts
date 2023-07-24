@@ -9,7 +9,7 @@ import { Categories } from '../models/categories';
 })
 export class BookService {
 
-  baseURL = 'https://mercadolibro-api.app.csharpjourney.com/api/book/';
+  baseURL = 'https://mercadolibro-api.app.csharpjourney.com/api/Book/';
 
   constructor(private http: HttpClient) { }
 
