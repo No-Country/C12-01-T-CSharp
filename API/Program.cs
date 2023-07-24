@@ -114,13 +114,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ClockSkew = TimeSpan.Zero // Override the default clock skew of 5 mins
         };
 
-        builder.Services.AddCors();
     });
+
 
 builder.Services.AddAuthorization(config =>
 {
     config.AddPolicy(UserRoles.Admin, Policies.AdminPolicy());
     config.AddPolicy(UserRoles.User, Policies.UserPolicy());
+});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod();
+    });
 });
 
 
@@ -140,7 +148,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 app.UseStaticFiles();
 
 
-//app.UseCors("CorsPolicy");
+app.UseCors();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
