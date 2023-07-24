@@ -132,8 +132,8 @@ builder.Services.AddCors(options =>
                           policy =>
                           {
                               policy.WithOrigins("https://mercadolibro.vercel.app",
-                                                  "http://localhost:4200");
-                                                  .AllowAnyHeader();
+                                                  "http://localhost:4200")
+                                                  .AllowAnyHeader()
                                                   .AllowAnyMethod();
                           });
 });
