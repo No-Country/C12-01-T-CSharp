@@ -169,7 +169,9 @@ app.UseStaticFiles(new StaticFileOptions
 var dir = Directory.GetCurrentDirectory();
 logger.LogCritical($"Current Directory: {dir}" );
 
+string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
+logger.LogCritical($"BaseDirectory: {currentDirectory}");
 
 
 
