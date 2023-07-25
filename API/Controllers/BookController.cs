@@ -111,7 +111,7 @@ namespace API.Controllers
                 return BadRequest();
 
             //handle image upload
-            var path = $"{_webHostEnvironment.ContentRootPath}\\images\\{book.Title}.jpg";
+            var path = $"{_webHostEnvironment.ContentRootPath}\\Images\\{book.Title}.jpg";
             var fileStream = System.IO.File.Create(path);
             fileStream.Write(book.CoverFileContent, 0, book.CoverFileContent.Length);
             fileStream.Close();
