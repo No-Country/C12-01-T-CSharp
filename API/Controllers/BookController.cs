@@ -124,9 +124,9 @@ namespace API.Controllers
                 Price = book.Price,
                 CoverFileName = $"images/{book.Title}.jpg"
             };
-
+            
             var createdBook = _bookService.AddBook(bookToAdd);
-
+            
             return Created("book", createdBook);
         }        
     }

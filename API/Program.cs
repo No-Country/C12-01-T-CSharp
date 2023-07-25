@@ -155,7 +155,22 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     });
 }
 
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var logger = services.GetRequiredService<ILogger<Program>>();
+
 app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images"
+});
+var dir = Directory.GetCurrentDirectory();
+logger.LogCritical($"Current Directory: {dir}" );
+
+
+
 
 
 app.UseCors(MyAllowSpecificOrigins);
