@@ -36,7 +36,11 @@
   <ItemGroup>
     <Folder Include="Frontend\" />
     <Folder Include="Images\" />
+	<Content Include="Images\**" CopyToPublishDirectory="PreserveNewest"></Content>
   </ItemGroup>
+	
+    
+	
 
   <ItemGroup>
     <Content Update="appsettings.Production.json">
