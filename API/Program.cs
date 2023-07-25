@@ -169,9 +169,10 @@ app.UseStaticFiles(new StaticFileOptions
 var dir = Directory.GetCurrentDirectory();
 logger.LogCritical($"Current Directory: {dir}" );
 
-string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+string rootDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName;
+string jhonImgDirectory = Path.Combine(rootDirectory, "jhon-img");
 
-logger.LogCritical($"BaseDirectory: {currentDirectory}");
+logger.LogCritical($"BaseDirectory: {jhonImgDirectory}");
 
 
 
