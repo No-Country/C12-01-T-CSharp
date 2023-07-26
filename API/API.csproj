@@ -36,8 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Frontend\" />
-    <Folder Include="pictures\" />
-	<Content Include="pictures\**" CopyToPublishDirectory="PreserveNewest"></Content>
   </ItemGroup>
 	
     

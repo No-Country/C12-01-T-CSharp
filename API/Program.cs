@@ -1,18 +1,11 @@
 using API.DataAccess;
 using API.Interfaces;
-using API.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using System.Text;
-using API.Identity;
 using API.models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -130,13 +123,13 @@ builder.Services.AddAuthorization(config =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(MyAllowSpecificOrigins,
-                          policy =>
-                          {
-                              policy.WithOrigins("https://mercadolibro.vercel.app",
-                                                  "http://localhost:4200")
-                                                  .AllowAnyHeader()
-                                                  .AllowAnyMethod();
-                          });
+       policy =>
+         {
+            policy.WithOrigins("https://mercadolibro.vercel.app",
+               "http://localhost:4200")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+         });
 });
 
 
@@ -159,19 +152,7 @@ var services = scope.ServiceProvider;
 var logger = services.GetRequiredService<ILogger<Program>>();
 
 app.UseStaticFiles();
-//app.UseStaticFiles(new StaticFileOptions
-//{
-//    FileProvider = new PhysicalFileProvider(
-//        Path.Combine(Directory.GetCurrentDirectory(), "Images")),
-//    RequestPath = "/Images"
-//});
-var dir = Directory.GetCurrentDirectory();
-logger.LogCritical($"Current Directory: {dir}" );
 
-string rootDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName;
-string jhonImgDirectory = Path.Combine(rootDirectory, "jhon-img");
-
-logger.LogCritical($"BaseDirectory: {jhonImgDirectory}");
 
 
 
@@ -184,23 +165,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-//Create the database and run the migration at runtime
-/*This code allows to get access to a Scope service inside our program class where we do not have the ability to inject a servce*/
-//using var scope = app.Services.CreateScope();
-//var services = scope.ServiceProvider;
-//var logger = services.GetRequiredService<ILogger<Program>>();
 
-//// Get services related to identity
-//var identityContext = services.GetRequiredService<AppIdentityDbContext>();
-
-//try
-//{
-//    //Seeding data to identity
-//    await identityContext.Database.MigrateAsync();
-//}
-//catch (Exception ex)
-//{
-//    logger.LogError(ex, "An error occurred during migration");
-//}
 
 app.Run();
