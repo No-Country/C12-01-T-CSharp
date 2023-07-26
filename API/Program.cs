@@ -60,7 +60,6 @@ builder.Services.AddTransient<IOrderService, OrderDataAccessLayer>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWishlistService, WishlistDataAccessLayer>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
 // Identity
 //builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 //{
@@ -160,12 +159,12 @@ var services = scope.ServiceProvider;
 var logger = services.GetRequiredService<ILogger<Program>>();
 
 app.UseStaticFiles();
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Images")),
-    RequestPath = "/Images"
-});
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+//    RequestPath = "/Images"
+//});
 var dir = Directory.GetCurrentDirectory();
 logger.LogCritical($"Current Directory: {dir}" );
 

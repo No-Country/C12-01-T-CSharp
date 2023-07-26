@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>API.xml</DocumentationFile>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,8 +36,8 @@
 
   <ItemGroup>
     <Folder Include="Frontend\" />
-    <Folder Include="Images\" />
-	<Content Include="Images\**" CopyToPublishDirectory="PreserveNewest"></Content>
+    <Folder Include="pictures\" />
+	<Content Include="pictures\**" CopyToPublishDirectory="PreserveNewest"></Content>
   </ItemGroup>
 	
     

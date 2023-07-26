@@ -3,6 +3,7 @@ using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using API.Dtos;
+using System.Reflection;
 
 namespace API.Controllers
 {
@@ -17,9 +18,11 @@ namespace API.Controllers
 
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ILogger<BookController> _logger;
 
-
-        public BookController(IBookService bookService, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
+        public BookController(IBookService bookService, IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment,
+            ILogger<BookController> log)
         {
             _bookService = bookService;
             _configuration = configuration;      
@@ -27,6 +30,7 @@ namespace API.Controllers
 
             _httpContextAccessor = httpContextAccessor;
             _webHostEnvironment = webHostEnvironment;
+            _logger = log;
         }
 
         /// <summary>
@@ -111,10 +115,12 @@ namespace API.Controllers
                 return BadRequest();
 
             //handle image upload
-            var path = $"{_webHostEnvironment.ContentRootPath}\\Images\\{book.Title}.jpg";
+            var path = $"{_webHostEnvironment.ContentRootPath}wwwroot/images/{book.Title}.jpg";
+          
             var fileStream = System.IO.File.Create(path);
             fileStream.Write(book.CoverFileContent, 0, book.CoverFileContent.Length);
-            fileStream.Close();
+            fileStream.Close();            
+  
 
             Book bookToAdd = new Book()
             {
