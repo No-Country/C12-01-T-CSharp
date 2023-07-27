@@ -6,6 +6,20 @@ https://mercadolibro-api.app.csharpjourney.com
 ## Client
 https://mercado-libro-alpha.vercel.app
 
+## Stack 
+### ASP.NET Core
+- Web API
+- Identity
+- JWT
+- Entity Framework Core
+
+### Angular
+- 
+## Integrantes
+**Backend** [Jhonatan](https://github.com/Jhonatan1599)
+
+**Frontend** [Oleydi](https://github.com/oleydi1234)
+
 ## Mapeo de tablas de Postgres a DbContext(Ef Core)
 Crear 
 - `dotnet ef dbcontext scaffold "Server=localhost;Port=5432;Database=BookCart;User Id=postgres;Password=Pa55w0rd!" Npgsql.EntityFrameworkCore.PostgreSQL -o Models -p .\API\ -s .\MercadoLibro.sln`
