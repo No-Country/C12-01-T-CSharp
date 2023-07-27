@@ -26,6 +26,9 @@ namespace API.Interfaces
 
         int AddBook(Book book);
 
+        string DeleteBook(int bookId);
+
+        Task<int> UpdateBook(Book book);
 
     }
 

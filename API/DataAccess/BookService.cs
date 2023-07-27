@@ -168,6 +168,47 @@ namespace API.DataAccess
                 throw;
             }
         }
+
+        public string DeleteBook(int bookId)
+        {
+            try
+            {
+                Book book = _dbContext.Books.Find(bookId);
+                _dbContext.Books.Remove(book);
+                _dbContext.SaveChanges();
+
+                return (book.CoverFileName);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> UpdateBook(Book book)
+        {
+            try
+            {
+                Book oldBookData = await GetBookData(book.BookId);
+
+                if (oldBookData.CoverFileName != null)
+                {
+                    if (book.CoverFileName == null)
+                    {
+                        book.CoverFileName = oldBookData.CoverFileName;
+                    }
+                }
+
+                _dbContext.Entry(book).State = EntityState.Modified;
+                _dbContext.SaveChanges();
+
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
 

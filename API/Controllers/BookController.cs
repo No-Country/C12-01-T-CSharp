@@ -4,6 +4,9 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using API.Dtos;
 using System.Reflection;
+using API.models;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -14,7 +17,7 @@ namespace API.Controllers
         private readonly IBookService _bookService;
         private readonly IConfiguration _configuration;
 
-       
+
 
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -25,7 +28,7 @@ namespace API.Controllers
             ILogger<BookController> log)
         {
             _bookService = bookService;
-            _configuration = configuration;      
+            _configuration = configuration;
 
 
             _httpContextAccessor = httpContextAccessor;
@@ -54,9 +57,9 @@ namespace API.Controllers
             List<Book> books = await _bookService.GetAllBooks(parameters);
 
             if (books.Count == 0) return NotFound($"No se encontro '{parameters.Search}' en Title ni en Author");
-            
-            books.ForEach(e =>  e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
-            
+
+            books.ForEach(e => e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
+
             return books;
         }
 
@@ -101,14 +104,15 @@ namespace API.Controllers
         [Route("GetSimilarBooks/{bookId}")]
         public async Task<List<Book>> SimilarBooks(int bookId)
         {
-            
-            var  books = await _bookService.GetSimilarBooks(bookId);
-            books.ForEach(e =>  e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
+
+            var books = await _bookService.GetSimilarBooks(bookId);
+            books.ForEach(e => e.CoverFileName = _configuration["ApiUrl"] + e.CoverFileName);
 
             return books;
         }
 
         [HttpPost]
+        [Authorize(Policy = UserRoles.Admin)]
         public IActionResult CreateEmployee([FromBody] BookToCreateDto book)
         {
             if (book == null)
@@ -116,11 +120,11 @@ namespace API.Controllers
 
             //handle image upload
             var path = $"{_webHostEnvironment.ContentRootPath}wwwroot/images/{book.Title}.jpg";
-          
+
             var fileStream = System.IO.File.Create(path);
             fileStream.Write(book.CoverFileContent, 0, book.CoverFileContent.Length);
-            fileStream.Close();            
-  
+            fileStream.Close();
+
 
             Book bookToAdd = new Book()
             {
@@ -130,10 +134,64 @@ namespace API.Controllers
                 Price = book.Price,
                 CoverFileName = $"images/{book.Title}.jpg"
             };
-            
+
             var createdBook = _bookService.AddBook(bookToAdd);
-            
+
             return Created("book", createdBook);
-        }        
+        }
+
+
+
+        /// <summary>
+        /// Delete a particular book record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [Authorize(Policy = UserRoles.Admin)]
+        public int Delete(int id)
+        {
+            string coverFileName = _bookService.DeleteBook(id);
+
+            var path = $"{_webHostEnvironment.ContentRootPath}wwwroot/{coverFileName}";
+
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            return 1;
+        }
+
+        /// <summary>
+        /// Update a particular book record
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut("{bookId}")]
+        [Authorize(Policy = UserRoles.Admin)]
+        public async Task<int> Put([FromBody] BookToUpdateDto bookToUpdate, int bookId)
+        {
+            var path = $"{_webHostEnvironment.ContentRootPath}wwwroot/images/{bookToUpdate.Title}.jpg";
+
+            bool isFileExists = Directory.Exists(path);
+
+            if (!isFileExists)
+            {
+                var fileStream = System.IO.File.Create(path);
+                fileStream.Write(bookToUpdate.CoverFileContent, 0, bookToUpdate.CoverFileContent.Length);
+                fileStream.Close();
+            }
+
+            Book book = new Book()
+            {
+                BookId = bookId,
+                Title = bookToUpdate.Title,
+                Author = bookToUpdate.Author,
+                Category = bookToUpdate.Category,
+                Price = bookToUpdate.Price,
+                CoverFileName = $"images/{bookToUpdate.Title}.jpg"
+            };
+
+            return await _bookService.UpdateBook(book);
+        }
     }
 }

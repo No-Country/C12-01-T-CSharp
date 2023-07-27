@@ -30,6 +30,19 @@
             <param name="bookId"></param>
             <returns></returns>
         </member>
+        <member name="M:API.Controllers.BookController.Delete(System.Int32)">
+            <summary>
+            Delete a particular book record
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.BookController.Put(API.Dtos.BookToUpdateDto,System.Int32)">
+            <summary>
+            Update a particular book record
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:API.Controllers.CheckOutController.Post(System.Int32,API.Dtos.OrdersDto)">
             <summary>
             Checkout from shopping cart
