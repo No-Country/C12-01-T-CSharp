@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 import { SubscriptionService } from 'src/app/services/subscription.service';
 import { Observable } from 'rxjs';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -26,9 +27,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
     private authService: AuthenticationService,
     private userService: UserService,
     private subscriptionService: SubscriptionService,
-    ) {
+    private wishlistService: WishlistService) {
 
     this.userId = localStorage.getItem('userId');
+    this.wishlistService.getWishlistItems(this.userId).subscribe();
     this.userService.getCartItemCount(this.userId).subscribe((data: number) => {
       this.subscriptionService.cartItemcount$.next(data);
     });

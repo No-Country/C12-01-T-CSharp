@@ -15,7 +15,7 @@ export class PriceFilterComponent implements OnInit {
   max: number;
   min: number;
   value: number;
-  step = 5.00;
+  step = 5;
   thumbLabel = true;
 
   constructor(private bookService: BookService) { }

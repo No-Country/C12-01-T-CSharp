@@ -9,7 +9,7 @@ export class UserService {
   baseURL: string;
 
   constructor(private http: HttpClient) {
-    this.baseURL = 'https://mercadolibro-api.app.csharpjourney.com/api/user/';
+    this.baseURL = 'https://mercadolibro-api.app.csharpjourney.com/api/User/';
   }
 
   registerUser(userdetails) {

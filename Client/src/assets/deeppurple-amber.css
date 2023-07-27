@@ -3,9 +3,6 @@
 /* stylelint-disable-next-line material/theme-mixin-api */
 /* stylelint-disable material/no-prefixes */
 /* stylelint-enable */
-.p-2 {
-  color: black;
-}
 .mat-ripple-element {
   background-color: rgba(0, 0, 0, 0.1); }
 
