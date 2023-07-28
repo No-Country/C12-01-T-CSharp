@@ -14,7 +14,12 @@ https://mercado-libro-alpha.vercel.app
 - Entity Framework Core
 
 ### Angular
-- 
+
+### Deploy
+- Digital Ocean
+- Docker
+- CapRover
+
 ## Integrantes
 **Backend** [Jhonatan](https://github.com/Jhonatan1599)
 
