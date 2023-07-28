@@ -16,8 +16,9 @@ export class BookFormComponent implements OnInit, OnDestroy {
   private formData = new FormData();
   bookForm: FormGroup;
   book: Book = new Book();
-  formTitle = 'Add';
+  formTitle = 'Agregar';
   coverImagePath;
+  coverFileContent;
   bookId;
   files;
   categoryList: [];
@@ -35,6 +36,8 @@ export class BookFormComponent implements OnInit, OnDestroy {
       author: ['', Validators.required],
       category: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
+      coverImagePath: this.coverImagePath,
+      coverFileContent: this.coverFileContent,
     });
   }
 
@@ -53,6 +56,7 @@ export class BookFormComponent implements OnInit, OnDestroy {
   get price() {
     return this.bookForm.get('price');
   }
+
 
   ngOnInit() {
     this.bookService.categories$
@@ -75,7 +79,7 @@ export class BookFormComponent implements OnInit, OnDestroy {
   }
 
   fetchBookData() {
-    this.formTitle = 'Edit';
+    this.formTitle = 'Editar';
     this.bookService.getBookById(this.bookId)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
@@ -95,6 +99,7 @@ export class BookFormComponent implements OnInit, OnDestroy {
         this.formData.append('file' + j, this.files[j]);
       }
     }
+    this.bookForm.value.coverFileContent = this.coverFileContent;
     this.formData.append('bookFormData', JSON.stringify(this.bookForm.value));
 
     if (this.bookId) {
@@ -104,8 +109,14 @@ export class BookFormComponent implements OnInit, OnDestroy {
     }
   }
 
+
   editBookDetails() {
-    this.bookService.updateBookDetails(this.formData)
+    let bookData = this.formData.get('bookFormData');
+    let bookDataJson = JSON.stringify(bookData);
+    bookDataJson = JSON.parse(bookDataJson);
+    bookDataJson = JSON.parse(bookDataJson);
+    const BOOKID = bookDataJson['bookId'];
+    this.bookService.updateBookDetails(BOOKID, bookDataJson)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         () => {
@@ -116,7 +127,11 @@ export class BookFormComponent implements OnInit, OnDestroy {
   }
 
   saveBookDetails() {
-    this.bookService.addBook(this.formData)
+    let bookData = this.formData.get('bookFormData');
+    let bookDataJson = JSON.stringify(bookData);
+    bookDataJson = JSON.parse(bookDataJson);
+    bookDataJson = JSON.parse(bookDataJson);
+    this.bookService.addBook(bookDataJson)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         () => {
@@ -137,7 +152,9 @@ export class BookFormComponent implements OnInit, OnDestroy {
       title: bookFormData.title,
       author: bookFormData.author,
       category: bookFormData.category,
-      price: bookFormData.price
+      price: bookFormData.price,
+      coverImagePath: bookFormData.coverFileName,
+      coverFileContent: bookFormData.coverFileName
     });
     this.coverImagePath = bookFormData.coverFileName;
   }
@@ -148,8 +165,11 @@ export class BookFormComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (myevent: ProgressEvent) => {
       this.coverImagePath = (myevent.target as FileReader).result;
+      this.coverFileContent = this.coverImagePath.replace('data:', '').replace(/^.+,/, '');
     };
   }
+
+
 
   ngOnDestroy() {
     this.unsubscribe$.next();

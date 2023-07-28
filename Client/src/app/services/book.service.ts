@@ -33,8 +33,8 @@ export class BookService {
     return this.http.get<Book[]>(this.baseURL + 'GetSimilarBooks/' + bookId);
   }
 
-  updateBookDetails(book) {
-    return this.http.put(this.baseURL, book);
+  updateBookDetails(bookId: number, book) {
+    return this.http.put(this.baseURL + bookId, book);
   }
 
   deleteBook(id: number) {
