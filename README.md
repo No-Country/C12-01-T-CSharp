@@ -4,7 +4,7 @@ MercadoLibro es un e-commerce especializado en la venta de libros
 ## API
 https://mercadolibro-api.app.csharpjourney.com
 ## Client
-https://mercado-libro-alpha.vercel.app
+https://mercadolibro.vercel.app
 
 ## Stack 
 ### ASP.NET Core
